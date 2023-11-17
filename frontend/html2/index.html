@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend 2</title>
+</head>
+<body style="background-color: crimson; color: #fff; font-family: sans-serif;">
+  <h1>Frontend 2</h1>
+  <div>
+    <h2>Reposta da api</h2>
+    <p id="response">Nenhum</p>
+  </div>
+
+</body>
+
+<script>
+  fetch("http://localhost/server/hello").then((response) => {
+    response.json().then((data) => {
+      const div = document.getElementById("response")
+      div.innerHTML = `${data.message} From container <strong>${data.os}</strong>.`
+    }).catch((err) => {
+      console.err(err)
+    });
+  }).catch((err) => {
+    console.err(err)
+  })
+</script>
+</html>
